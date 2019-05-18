@@ -21,15 +21,15 @@ void main(List<String> arguments) {
 }
 
 Future dcat(List<String> paths, bool showLineNumbers) async {
-  if(paths.isEmpty) {
+  if (paths.isEmpty) {
     await stdin.pipe(stdout);
   } else {
     for (var path in paths) {
       int lineNumber = 1;
       Stream lines = new File(path)
-        .openRead()
-        .transform(utf8.decoder)
-        .transform(const LineSplitter());
+          .openRead()
+          .transform(utf8.decoder)
+          .transform(const LineSplitter());
       try {
         await for (var line in lines) {
           if (showLineNumbers) {
